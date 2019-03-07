@@ -54,17 +54,25 @@ for word in text:
         alice_d[word] = 0
     alice_d[word] += 1
 
+
 def alphabetical(d):
     t = []
-    for k in sorted(alice_d.keys()):
-         t.append((k, alice_d[k]))
+    for k in sorted(d.keys()):
+        t.append((k, d[k]))
     return t[:8]
+# t  = [(k, d[k]) for k in sorted(d.keys())]
+
 
 def most_frequent(d):
-    v = list(d.values())
-    k = list(d.keys())
+    '''
+
+    :param d:
+    :return: creates tuples of (value, key) and sorts them
+    '''
     return (sorted(zip(d.values(), d.keys()), reverse=True))[:3]
 
 if __name__ == "__main__":
-    pprint.pprint(most_frequent(alice_d))
+    frequent = most_frequent(alice_d)
+    pprint.pprint(frequent)
     pprint.pprint(alphabetical(alice_d))
+    print(alice_d['the'])
